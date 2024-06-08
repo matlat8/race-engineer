@@ -1,6 +1,7 @@
 import { CarOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useState, useContext } from 'react';
+import { supabase } from "./supabase/client";
 import { NavLink } from 'react-router-dom';
 import AppContext from './App'
 
@@ -23,6 +24,12 @@ const items = [
     ),
     key: 'drivers',
     icon: <CarOutlined />,
+  },
+  {
+    label: 'Sign Out',
+    key: 'signout',
+    icon: <SettingOutlined />,
+
   },
   {
     label: 'Navigation Three - Submenu',
@@ -61,12 +68,19 @@ const items = [
   },
 
 ];
+
 const App = ({nav_key }) => {
   const [current, setCurrent] = useState('home');
   const onClick = (e) => {
     console.log('click ', e);
+    if (e.key === 'signout') {
+      console.log('signout');
+      supabase.auth.signOut();
+      return;
+    }
+
     setCurrent(e.key);
   };
-  return <Menu onClick={onClick} selectedKeys={[nav_key]} mode="horizontal" items={items} />;
+  return <Menu className='navbar-fixed-top' onClick={onClick} selectedKeys={[nav_key]} mode="horizontal" items={items} />;
 };
 export default App;
