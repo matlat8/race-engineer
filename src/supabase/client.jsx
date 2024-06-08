@@ -3,4 +3,9 @@ import { createClient } from "@supabase/supabase-js";
 const projectURL = import.meta.env.VITE_SUPABASE_URL;
 const projectKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(projectURL, projectKey);
+export const supabase = createClient(projectURL, projectKey, {
+    auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+}});

@@ -3,11 +3,11 @@ import { createClient } from '@supabase/supabase-js'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { Row, Col, Layout } from "antd";
-import NavBar from './NavBar'
+import NavBar from './NavBar';
+
+import DriversTable from './components/DriversTable';
 
 const { Header, Content } = Layout;
-
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
 
 const Home = () => {
 
@@ -19,7 +19,9 @@ const Home = () => {
             <Content>
             <div className='full-width'>
                 <Row>
-                  <Col span={12}>Column 1</Col>
+                  <Col span={12}>
+                    <DriversTable />
+                  </Col>
                   <Col span={12}>Column 2</Col>
                 </Row>
                 <Row>
