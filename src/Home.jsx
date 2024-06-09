@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
-import { Row, Col, Layout } from "antd";
+import { Row, Col, Layout, Space } from "antd";
 import NavBar from './NavBar';
 
 import DriversTable from './components/DriversTable';
